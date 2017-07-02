@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- 标签 -->
+    <color name="tag_col_1">#fec721</color>
+    <color name="tag_col_2">#32a1ff</color>
+    <color name="tag_col_3">#ff6a25</color>
+    <color name="tag_col_4">#a281ec</color>
+    <color name="tag_col_5">#e978da</color>
+    <color name="tag_col_6">#3ec7c5</color>
+    <color name="tag_col_7">#fa5282</color>
+    <color name="tag_col_8">#f39943</color>
+    <color name="white">#ffffff</color>
+
+    <color name="btn_cancel_color">#999999</color>
+    <color name="btn_confirm_color">#303F9F</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="alerter_default_success_background">#4CAF50</color>
+    <color name="alert_default_error_background">#F44336</color>
+</resources>
