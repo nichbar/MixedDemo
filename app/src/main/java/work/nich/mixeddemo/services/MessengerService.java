@@ -13,11 +13,6 @@ import android.widget.Toast;
 
 import work.nich.mixeddemo.consts.ParamsConsts;
 
-/**
- * Created by nich- on 2016/10/17.
- *
- */
-
 public class MessengerService extends Service {
 
     private Messenger mMessenger;
@@ -32,7 +27,6 @@ public class MessengerService extends Service {
     public IBinder onBind(Intent intent) {
         return mMessenger.getBinder();
     }
-    
     
     private static class MessengerHandler extends Handler {
         private Context mContext;

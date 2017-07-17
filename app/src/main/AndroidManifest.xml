@@ -28,6 +28,9 @@
         <activity android:name=".activities.MessengerActivity"/>
         <activity android:name=".activities.Dagger2Activity"/>
         <activity android:name=".activities.PermissionTrialActivity"/>
+        <activity android:name=".activities.BinderActivity"/>
+        <service android:name=".services.BinderService"
+            android:process="work.nich.mixeddemo.ServiceProcess"/>
         <service android:name=".services.MessengerService"/>
 
         <activity

@@ -1,1 +1,1 @@
-include ':app', ':tinyimagepicker'
+include ':app'

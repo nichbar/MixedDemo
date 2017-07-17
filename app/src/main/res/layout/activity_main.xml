@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:onClick="openSimpleWebView"
+            android:onClick="openBinder"
             android:text="@string/messenger"
             android:textSize="18sp"/>
         <Button

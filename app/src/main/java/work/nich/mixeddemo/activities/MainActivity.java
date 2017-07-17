@@ -9,14 +9,11 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.util.Calendar;
 
-import in.myinnos.awesomeimagepicker.activities.AlbumSelectActivity;
-import in.myinnos.awesomeimagepicker.helpers.ConstantsCustomGallery;
 import work.nich.chinesename.YourName;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
 
 public class MainActivity extends BaseActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +68,9 @@ public class MainActivity extends BaseActivity {
                 now.get(Calendar.DAY_OF_MONTH)
         );
         dpd.show(getFragmentManager(), "Datepickerdialog");
+    }
+
+    public void openBinder(View view) {
+        startActivity(new Intent(this, BinderActivity.class));
     }
 }
