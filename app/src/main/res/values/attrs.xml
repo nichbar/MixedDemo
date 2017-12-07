@@ -22,8 +22,9 @@
         <attr name="drawItemCount" format="integer"/>
     </declare-styleable>
 
-    <declare-styleable name="ProgressText">
-        <attr name="after_progress_color" format="color"/>
-        <attr name="before_progress_color" format="color"/>
+    <declare-styleable name="ProgressView">
+        <attr name="preColor" format="color"/>
+        <attr name="postColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
     </declare-styleable>
 </resources>

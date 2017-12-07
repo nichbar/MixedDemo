@@ -8,7 +8,6 @@ import android.widget.Toast;
 import work.nich.chinesename.YourName;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
-import work.nich.mixeddemo.views.ProgressText;
 
 public class MainActivity extends BaseActivity {
 
