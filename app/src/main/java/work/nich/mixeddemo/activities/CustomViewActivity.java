@@ -2,11 +2,6 @@ package work.nich.mixeddemo.activities;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-
-import java.util.Calendar;
 
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
@@ -20,7 +15,7 @@ import work.nich.mixeddemo.views.alerter.Alerter;
  * For you,
  */
 
-public class CustomViewActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener {
+public class CustomViewActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +38,6 @@ public class CustomViewActivity extends BaseActivity implements DatePickerDialog
                 }
             }
         });
-
-        Calendar now = Calendar.getInstance();
-        DatePickerDialog dpd = DatePickerDialog.newInstance(this, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-        dpd.show(getFragmentManager(), "dialog");
     }
 
     /**
@@ -72,8 +63,4 @@ public class CustomViewActivity extends BaseActivity implements DatePickerDialog
         ((ExperienceView) view).setExperience(43999);
     }
 
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-
-    }
 }

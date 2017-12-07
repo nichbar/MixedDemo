@@ -5,16 +5,16 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
 import work.nich.mixeddemo.dagger2.component.DaggerMainComponent;
 import work.nich.mixeddemo.dagger2.component.MainComponent;
+import work.nich.mixeddemo.dagger2.entities.Cloth;
 import work.nich.mixeddemo.dagger2.entities.Clothes;
 import work.nich.mixeddemo.dagger2.entities.Shoe;
 import work.nich.mixeddemo.dagger2.modules.MainModule;
-import work.nich.mixeddemo.dagger2.entities.Cloth;
 
 /**
  * Created by nich on 2017/1/25.
@@ -22,7 +22,7 @@ import work.nich.mixeddemo.dagger2.entities.Cloth;
  */
 
 public class Dagger2Activity extends BaseActivity {
-    @Bind(R.id.dagger2_text)
+    @BindView(R.id.dagger2_text)
     TextView mainText;
 
     @Inject

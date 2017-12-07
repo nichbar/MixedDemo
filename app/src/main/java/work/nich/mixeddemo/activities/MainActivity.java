@@ -5,13 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
-
-import java.util.Calendar;
-
 import work.nich.chinesename.YourName;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
+import work.nich.mixeddemo.views.ProgressText;
 
 public class MainActivity extends BaseActivity {
 
@@ -59,18 +56,11 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    public void selectPic(View view) {
-        Calendar now = Calendar.getInstance();
-        DatePickerDialog dpd = DatePickerDialog.newInstance(
-                null,
-                now.get(Calendar.YEAR),
-                now.get(Calendar.MONTH),
-                now.get(Calendar.DAY_OF_MONTH)
-        );
-        dpd.show(getFragmentManager(), "Datepickerdialog");
-    }
-
     public void openBinder(View view) {
         startActivity(new Intent(this, BinderActivity.class));
+    }
+
+    public void progressText(View view) {
+        startActivity(new Intent(this, ProgressTextActivity.class));
     }
 }

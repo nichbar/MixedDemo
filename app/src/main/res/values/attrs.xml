@@ -22,5 +22,8 @@
         <attr name="drawItemCount" format="integer"/>
     </declare-styleable>
 
-
+    <declare-styleable name="ProgressText">
+        <attr name="after_progress_color" format="color"/>
+        <attr name="before_progress_color" format="color"/>
+    </declare-styleable>
 </resources>

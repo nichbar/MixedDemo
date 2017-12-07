@@ -62,8 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:onClick="selectPic"
+            android:onClick="progressText"
             android:textSize="18sp"
-            android:text="@string/select_pic" />
+            android:text="@string/progresstext" />
     </LinearLayout>
 </RelativeLayout>
