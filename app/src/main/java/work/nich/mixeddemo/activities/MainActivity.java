@@ -1,5 +1,9 @@
 package work.nich.mixeddemo.activities;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +12,11 @@ import android.widget.Toast;
 import work.nich.chinesename.YourName;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
+import work.nich.mixeddemo.services.CachingService;
 
 public class MainActivity extends BaseActivity {
+
+    private static final int LOAD_IMAGE = 9999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +68,14 @@ public class MainActivity extends BaseActivity {
 
     public void progressText(View view) {
         startActivity(new Intent(this, ProgressTextActivity.class));
+    }
+
+    public void startSchedulerJob(View view) {
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        if (jobScheduler != null) {
+            jobScheduler.schedule(new JobInfo.Builder(LOAD_IMAGE, new ComponentName(this, CachingService.class))
+                    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                    .build());
+        }
     }
 }

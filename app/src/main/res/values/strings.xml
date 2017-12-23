@@ -17,4 +17,5 @@
     <string name="yourname">yourName</string>
     <string name="premission">PERMISSION</string>
     <string name="progresstext">PROGRESS_TEXT</string>
+    <string name="scheduler_job">SCHEDULER_JOB</string>
 </resources>

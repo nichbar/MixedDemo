@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="work.nich.mixeddemo">
+    package="work.nich.mixeddemo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".MixedApplication"
@@ -17,28 +17,32 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ThreadTestActivity"/>
-        <activity android:name=".activities.WebViewActivity"/>
-        <activity android:name=".activities.CustomViewActivity"/>
-        <activity android:name=".activities.MessengerActivity"/>
-        <activity android:name=".activities.Dagger2Activity"/>
-        <activity android:name=".activities.PermissionTrialActivity"/>
-        <activity android:name=".activities.BinderActivity"/>
+        <activity android:name=".activities.ThreadTestActivity" />
+        <activity android:name=".activities.WebViewActivity" />
+        <activity android:name=".activities.CustomViewActivity" />
+        <activity android:name=".activities.MessengerActivity" />
+        <activity android:name=".activities.Dagger2Activity" />
+        <activity android:name=".activities.PermissionTrialActivity" />
+        <activity android:name=".activities.BinderActivity" />
         <activity android:name=".activities.ProgressTextActivity" />
-        <service android:name=".services.BinderService"
-            android:process="work.nich.mixeddemo.ServiceProcess"/>
-        <service android:name=".services.MessengerService"/>
+
+        <service
+            android:name=".services.BinderService"
+            android:process="work.nich.mixeddemo.ServiceProcess" />
+        <service android:name=".services.MessengerService" />
+        <service
+            android:name=".services.CachingService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity
             android:name=".activities.CoordinatorActivity"
             android:label="@string/title_activity_coordinator"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
