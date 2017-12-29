@@ -6,22 +6,40 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
 import work.nich.chinesename.YourName;
+import work.nich.mixeddemo.AppExecutors;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
 import work.nich.mixeddemo.services.CachingService;
 
 public class MainActivity extends BaseActivity {
+    private final static String TAG = MainActivity.class.getSimpleName();
+
+    private AppExecutors mExecutor;
 
     private static final int LOAD_IMAGE = 9999;
+
+    private long mStartTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mExecutor = new AppExecutors();
     }
 
     public void openSimpleWebView(View view) {
@@ -77,5 +95,38 @@ public class MainActivity extends BaseActivity {
                     .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
                     .build());
         }
+    }
+    
+    public void testReadZipEntryTime(View view) {
+        mExecutor.diskIO().execute(() -> {
+            mStartTime = System.currentTimeMillis();
+            File file = new File(Environment.getExternalStorageDirectory() + "/channelApk");
+            File[] zipFile = file.listFiles();
+            for (File aZipFile : zipFile) {
+                long startTime = System.currentTimeMillis();
+
+                ZipFile zip = null;
+                try {
+                    zip = new ZipFile(aZipFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Enumeration<? extends ZipEntry> enu = zip.entries();
+                while (enu.hasMoreElements()) {
+                    ZipEntry entry = enu.nextElement();
+                    if (entry.isDirectory()) {
+                        continue;
+                    }
+                    String name = entry.getName().toUpperCase();
+                    if (name.contains("META-INF") && name.contains("TEST_CHANNEL")) {
+                        long foundTime = System.currentTimeMillis();
+                        Log.d(TAG, "Elapsed time of finding " + zip.getName() + " " + entry.getName() + " is " + (foundTime - startTime));
+                    }
+                }
+            }
+
+            Log.d(TAG, "Total elapsed time of finding all " + zipFile.length + " APK's channel is " + (System.currentTimeMillis() - mStartTime)  + " millisecond.");
+        });
     }
 }

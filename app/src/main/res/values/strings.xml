@@ -18,4 +18,5 @@
     <string name="premission">PERMISSION</string>
     <string name="progresstext">PROGRESS_TEXT</string>
     <string name="scheduler_job">SCHEDULER_JOB</string>
+    <string name="read_zip_entry_time">READ_ZIP_ENTRY_TIME</string>
 </resources>
