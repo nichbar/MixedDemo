@@ -79,5 +79,13 @@
             android:onClick="testReadZipEntryTime"
             android:textSize="18sp"
             android:text="@string/read_zip_entry_time" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="openGithub"
+            android:textSize="18sp"
+            android:text="github" />
+
     </LinearLayout>
 </RelativeLayout>

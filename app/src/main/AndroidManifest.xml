@@ -31,6 +31,7 @@
         <activity android:name=".activities.PermissionTrialActivity" />
         <activity android:name=".activities.BinderActivity" />
         <activity android:name=".activities.ProgressTextActivity" />
+        <activity android:name=".github.view.GithubRepoActivity"/>
 
         <service
             android:name=".services.BinderService"
@@ -43,7 +44,7 @@
         <activity
             android:name=".activities.CoordinatorActivity"
             android:label="@string/title_activity_coordinator"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

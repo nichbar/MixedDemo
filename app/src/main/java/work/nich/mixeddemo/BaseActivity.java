@@ -1,6 +1,6 @@
 package work.nich.mixeddemo;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
 import work.nich.mixeddemo.tools.SwipeWindowHelper;
@@ -10,7 +10,7 @@ import work.nich.mixeddemo.tools.SwipeWindowHelper;
  * Your base activity.
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
     private SwipeWindowHelper mSwipeWindowHelper;
 
     @Override

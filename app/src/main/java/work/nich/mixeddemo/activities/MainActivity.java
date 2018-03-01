@@ -11,11 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -24,6 +21,7 @@ import work.nich.chinesename.YourName;
 import work.nich.mixeddemo.AppExecutors;
 import work.nich.mixeddemo.BaseActivity;
 import work.nich.mixeddemo.R;
+import work.nich.mixeddemo.github.view.GithubRepoActivity;
 import work.nich.mixeddemo.services.CachingService;
 
 public class MainActivity extends BaseActivity {
@@ -128,5 +126,10 @@ public class MainActivity extends BaseActivity {
 
             Log.d(TAG, "Total elapsed time of finding all " + zipFile.length + " APK's channel is " + (System.currentTimeMillis() - mStartTime)  + " millisecond.");
         });
+    }
+
+    public void openGithub(View view) {
+        Intent intent = new Intent(this, GithubRepoActivity.class);
+        startActivity(intent);
     }
 }
