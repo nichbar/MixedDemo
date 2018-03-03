@@ -16,88 +16,67 @@
 
 package work.nich.mixeddemo.github;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Transformations;
+import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PagedList;
+
+import io.reactivex.disposables.CompositeDisposable;
 import work.nich.mixeddemo.AppExecutors;
+import work.nich.mixeddemo.github.repository.Listing;
+import work.nich.mixeddemo.github.repository.datasource.RepoDataSource;
+import work.nich.mixeddemo.github.repository.datasource.RepoDataSourceFactory;
+import work.nich.mixeddemo.github.vo.Repo;
 import work.nich.mixeddemo.github.vo.RepoDao;
-import work.nich.mixeddemo.github.vo.RepoSearchResponse;
 
 /**
  * Repository that handles Repo instances.
- *
+ * <p>
  * unfortunate naming :/ .
  * Repo - value object name
  * Repository - type of this class.
  */
 public class RepoRepository {
 
-    private final GithubDb db;
+    private final GithubDb mGithubDb;
 
-    private final RepoDao repoDao;
+    private final RepoDao mRepoDao;
 
-    private final GithubService githubService;
+    private final GithubService mGithubService;
 
-    private final AppExecutors appExecutors;
+    private final AppExecutors mAppExecutors;
 
-    public RepoRepository(AppExecutors appExecutors, GithubDb db, RepoDao repoDao,
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+
+    private RepoDataSourceFactory mRepoDataSourceFactory;
+
+    public RepoRepository(AppExecutors appExecutors, GithubDb mGithubDb, RepoDao repoDao,
                           GithubService githubService) {
-        this.db = db;
-        this.repoDao = repoDao;
-        this.githubService = githubService;
-        this.appExecutors = appExecutors;
+        this.mGithubDb = mGithubDb;
+        this.mRepoDao = repoDao;
+        this.mGithubService = githubService;
+        this.mAppExecutors = appExecutors;
     }
 
-    public RepoSearchResponse search(String query, int page) {
-        return githubService.searchRepos(query, page);
+    public Listing<Repo> fetchRepos(String repoName) {
+        mRepoDataSourceFactory = new RepoDataSourceFactory(mGithubService, mCompositeDisposable, repoName);
+
+        PagedList.Config config = new PagedList.Config.Builder()
+                .setPageSize(5)
+                .setInitialLoadSizeHint(10)
+                .setEnablePlaceholders(false)
+                .build();
+
+        LiveData<PagedList<Repo>> pagedList = new LivePagedListBuilder<>(mRepoDataSourceFactory, config).build();
+
+        return new Listing<>(
+                pagedList,
+                Transformations.switchMap(mRepoDataSourceFactory.getRepoDataSourceMutableLiveData(), RepoDataSource::getNetworkState),
+                Transformations.switchMap(mRepoDataSourceFactory.getRepoDataSourceMutableLiveData(), RepoDataSource::getInitialLoad)
+        );
     }
 
-//    public LiveData<Resource<List<Repo>>> search(String query) {
-//        return new NetworkBoundResource<List<Repo>, RepoSearchResponse>(appExecutors) {
-//
-//            @Override
-//            protected void saveCallResult(@NonNull RepoSearchResponse item) {
-//                List<Integer> repoIds = item.getRepoIds();
-//                RepoSearchResult repoSearchResult = new RepoSearchResult(
-//                        query, repoIds, item.getTotal(), item.getNextPage());
-//                db.beginTransaction();
-//                try {
-//                    repoDao.insertRepos(item.getItems());
-//                    repoDao.insert(repoSearchResult);
-//                    db.setTransactionSuccessful();
-//                } finally {
-//                    db.endTransaction();
-//                }
-//            }
-//
-//            @Override
-//            protected boolean shouldFetch(@Nullable List<Repo> data) {
-//                return data == null;
-//            }
-//
-//            @NonNull
-//            @Override
-//            protected LiveData<List<Repo>> loadFromDb() {
-//                return Transformations.switchMap(repoDao.search(query), searchData -> {
-//                    if (searchData == null) {
-//                        return AbsentLiveData.create();
-//                    } else {
-//                        return repoDao.loadOrdered(searchData.repoIds);
-//                    }
-//                });
-//            }
-//
-//            @NonNull
-//            @Override
-//            protected LiveData<ApiResponse<RepoSearchResponse>> createCall() {
-//                return githubService.searchRepos(query, 0);
-//            }
-//
-//            @Override
-//            protected RepoSearchResponse processResponse(ApiResponse<RepoSearchResponse> response) {
-//                RepoSearchResponse body = response.body;
-//                if (body != null) {
-//                    body.setNextPage(response.getNextPage());
-//                }
-//                return body;
-//            }
-//        }.asLiveData();
-//    }
+    public void clear() {
+        mCompositeDisposable.clear();
+    }
 }

@@ -1,6 +1,7 @@
 package work.nich.mixeddemo.github.view;
 
 import android.arch.paging.PagedListAdapter;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
@@ -11,13 +12,17 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import work.nich.mixeddemo.AppExecutors;
 import work.nich.mixeddemo.R;
 import work.nich.mixeddemo.github.vo.Repo;
 
 public class RepoAdapter extends PagedListAdapter<Repo, RepoAdapter.RepoViewHolder> {
+    private boolean mCount;
+    private AppExecutors mAppExecutors;
 
     protected RepoAdapter(DiffCallback callback) {
         super(callback);
+        mAppExecutors = new AppExecutors();
     }
 
     @NonNull
@@ -49,6 +54,26 @@ public class RepoAdapter extends PagedListAdapter<Repo, RepoAdapter.RepoViewHold
             title.setText(repo.name);
             author.setText(repo.description);
             count.setText(repo.fullName);
+
+            if (repo.name.contains("anko")) {
+                startCountingAllAtOnce(count);
+            }
+        }
+    }
+
+    private void startCountingAllAtOnce(TextView tv) {
+        if (!mCount) {
+            mCount = true;
+            new CountDownTimer(30000, 100) {
+
+                public void onTick(long millisUntilFinished) {
+                    tv.setText("seconds remaining: " + millisUntilFinished / 1000);
+                }
+
+                public void onFinish() {
+                    tv.setText("done!");
+                }
+            }.start();
         }
     }
 
