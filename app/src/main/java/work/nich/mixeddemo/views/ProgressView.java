@@ -48,7 +48,7 @@ public class ProgressView extends AppCompatTextView implements View.OnClickListe
     private static final int DEFAULT_AFTER_PROGRESS_COLOR = Color.RED;
     private static final int DEFAULT_BACKGROUND_COLOR = Color.RED;
 
-    private int mStrokeWidth = dp2px(3);
+    private int mStrokeWidth = dp2px(1);
 
     public ProgressView(Context context) {
         this(context, null, 0);

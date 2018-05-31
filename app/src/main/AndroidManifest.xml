@@ -23,28 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ThreadTestActivity" />
-        <activity android:name=".activities.WebViewActivity" />
         <activity android:name=".activities.CustomViewActivity" />
-        <activity android:name=".activities.MessengerActivity" />
-        <activity android:name=".activities.Dagger2Activity" />
         <activity android:name=".activities.PermissionTrialActivity" />
-        <activity android:name=".activities.BinderActivity" />
-        <activity android:name=".activities.ProgressTextActivity" />
-        <activity android:name=".github.view.GithubRepoActivity"/>
 
-        <service
-            android:name=".services.BinderService"
-            android:process="work.nich.mixeddemo.ServiceProcess" />
-        <service android:name=".services.MessengerService" />
         <service
             android:name=".services.CachingService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <activity
-            android:name=".activities.CoordinatorActivity"
-            android:label="@string/title_activity_coordinator"
-            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
