@@ -5,6 +5,7 @@ import android.app.Application;
 import work.nich.mixeddemo.tools.ActivityLifecycleHelper;
 
 public class MixedApplication extends Application {
+
     private ActivityLifecycleHelper mActivityLifecycleHelper;
     private static MixedApplication mApp;
 

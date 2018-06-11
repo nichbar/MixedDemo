@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_left_sub_category"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        tools:text="星海爭霸" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:background="#ededed" />
+
+    <TextView
+        android:id="@+id/tv_center_sub_category"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        tools:text="空海爭霸" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="15dp"
+        android:background="#ededed" />
+
+    <TextView
+        android:id="@+id/tv_right_sub_category"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        tools:text="地海爭霸" />
+</LinearLayout>

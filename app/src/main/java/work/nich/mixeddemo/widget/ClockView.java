@@ -1,4 +1,4 @@
-package work.nich.mixeddemo.views;
+package work.nich.mixeddemo.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

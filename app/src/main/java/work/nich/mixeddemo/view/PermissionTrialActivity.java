@@ -1,4 +1,4 @@
-package work.nich.mixeddemo.activities;
+package work.nich.mixeddemo.view;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

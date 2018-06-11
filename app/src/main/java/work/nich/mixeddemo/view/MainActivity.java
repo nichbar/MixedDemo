@@ -1,4 +1,4 @@
-package work.nich.mixeddemo.activities;
+package work.nich.mixeddemo.view;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;

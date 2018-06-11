@@ -1,4 +1,4 @@
-package work.nich.mixeddemo.views;
+package work.nich.mixeddemo.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
